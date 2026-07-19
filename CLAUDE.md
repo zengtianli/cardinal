@@ -1,7 +1,8 @@
 # CLAUDE.md · cardinal（上游 fork + 自研增强）
 
-> 上游 = [cardisoft/cardinal](https://github.com/cardisoft/cardinal)（MIT，macOS 文件名极速搜索，Rust+Tauri）。
-> 本 clone = 私有 fork，remote `mine` → `zengtianli/cardinal`（private）；`origin` = 上游只读。
+> 上游 = [cardisoft/cardinal](https://github.com/cardisoft/cardinal)（MIT，macOS 文件名极速搜索，Rust+Tauri，1610⭐）。
+> 本 clone = **GitHub 真 fork**，remote `mine` → [`zengtianli/cardinal`](https://github.com/zengtianli/cardinal)（**public**，isFork=true，parent=cardisoft/cardinal）；`origin` = 上游只读。
+> **已提 PR 给上游**：[cardisoft/cardinal#222](https://github.com/cardisoft/cardinal/pull/222)（分支 `pr/persist-search-history`，只含功能不含本 fork 维护文件）。合并后可弃 fork。
 
 ## 本 fork 的增强（feat/search-history 分支）
 
@@ -23,6 +24,7 @@ npm run tauri build              # 需 rustup nightly（rust-toolchain.toml 钉�
 ```
 
 - `/Applications/Cardinal.app` 现 = 本 fork 自编译版（非上游 release）；升级上游 = `git fetch origin && git rebase origin/master feat/search-history` 后重编译
+- 分支布局：`feat/search-history`=本地工作分支（功能 + CLAUDE.md/.claude fork 维护文件 + a11y 修正）；`pr/persist-search-history`=投上游的干净分支（仅 `cardinal/` 功能，单 squash 提交）。改功能后同步到 PR 分支：`git checkout pr/persist-search-history && git checkout feat/search-history -- cardinal/ && git commit --amend` 再 `git push mine pr/persist-search-history -f`
 - toolchain 由 rustup 管（`~/.cargo/bin` 前置 PATH）；homebrew cargo 不认 rust-toolchain.toml
 - 测试基线：272 上游 + 6 新增全绿；`npx tsc --noEmit` 干净
 
