@@ -247,6 +247,7 @@ export function SearchBar({
                 type="button"
                 className="search-history-toggle"
                 aria-label={historyLabel}
+                aria-haspopup="true"
                 aria-expanded={historyOpen}
                 title={historyLabel}
                 onClick={onToggleHistory}
@@ -254,7 +255,7 @@ export function SearchBar({
                 {HISTORY_ICON}
               </button>
               {historyOpen ? (
-                <div className="search-history-panel" role="listbox" aria-label={historyLabel}>
+                <div className="search-history-panel" aria-label={historyLabel}>
                   {historyEntries.length === 0 ? (
                     <div className="search-history-empty">{historyEmptyLabel}</div>
                   ) : (
@@ -264,8 +265,6 @@ export function SearchBar({
                           <button
                             type="button"
                             key={entry}
-                            role="option"
-                            aria-selected={false}
                             className="search-history-item"
                             title={entry}
                             onClick={() => onSelectHistoryEntry?.(entry)}
