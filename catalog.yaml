@@ -14,9 +14,11 @@ depends_on: []          # 自带完整依赖(Cargo + npm),不消费总部任何�
 tier: PACKAGE
 owner: cardisoft        # 上游作者;本 fork = GitHub 真 fork,remote mine=zengtianli/cardinal(public,isFork=true)
 docs: ./CLAUDE.md
-status: active          # 日常在用:/Applications/Cardinal.app 由本仓自编译,非上游 release
+lifecycle: active    # 日常在用:/Applications/Cardinal.app 由本仓自编译,非上游 release
 notes: |
   2026-07-25 从 ~/Dev 根归位到 ~/Apps(A 档:自带完整依赖、不 import 总部代码)。
   分支布局:feat/search-history=本地工作分支(功能+fork 维护文件);pr/persist-search-history=投上游的干净分支。
   升级上游 = git fetch origin && git rebase origin/master feat/search-history 后**重编译**,禁直接覆盖装机版。
   构建/坑单全文见 ./CLAUDE.md。
+
+bundle_id: com.cardinal.one    # 装机 .app 的真身,补此属性后 app_vitals 才能取到焦点会话数
