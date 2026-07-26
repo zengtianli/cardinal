@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased (fork `feat/search-history`)
+- Persist committed search queries across restarts (`localStorage` key `cardinal.recentSearches`, newest first, deduplicated, capped at 50).
+- Record a query on `Enter` in the search bar and on any result open (double-click / `Cmd+O` / context menu).
+- Add a search-history dropdown to the search bar: click an entry to re-run it, `Clear history` to empty the list, `Esc`/outside click to close.
+- Localize the new strings (`search.history.*`) across all 15 bundled languages.
+- Upstream PR: <https://github.com/cardisoft/cardinal/pull/222> (open).
+
 ## 0.1.23 — 2026-03-25
 - Reduce power consumption by expanding the default ignored paths to cover more macOS cache, log, metadata, and runtime directories.
 - Further reduce background work by making the filesystem event watcher honor ignored paths.

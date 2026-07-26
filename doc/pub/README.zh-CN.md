@@ -61,6 +61,16 @@ Cardinal 现在在经典的子串/前缀匹配基础上叠加了 Everything 兼�
 - `Cmd+F` – 焦点回到搜索框。
 - `ArrowUp`/`ArrowDown`（在搜索框内）– 浏览搜索历史。
 
+### 搜索历史持久化（本 fork 增强）
+
+> 本 fork 新增（分支 `feat/search-history`，已向上游提 PR [#222](https://github.com/cardisoft/cardinal/pull/222)）。上游只有内存态的 `ArrowUp`/`ArrowDown` 历史，退出 app 即丢。
+
+提交过的查询会落盘保存，重启 app 后依然在：
+
+- **什么会被记录** – 在搜索框按 `Enter`，以及任何「打开结果」的动作（双击 / `Cmd+O` / 右键菜单）。能促成一次打开的搜索才值得留。
+- **存在哪** – `localStorage` 的 `cardinal.recentSearches` 键，最新在前、重复项置顶、上限 50 条。
+- **下拉面板** – 搜索框右侧的 🕘 按钮（Files 标签页）打开历史面板：点条目立即重跑该查询，`清空历史` 清空列表，`Esc` 或点面板外关闭。
+
 祝你搜索愉快！
 
 ---

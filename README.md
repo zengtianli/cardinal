@@ -61,6 +61,16 @@ For the supported operator catalog—including boolean grouping, folder scoping,
 - `Cmd+F` – jump focus back to the search bar.
 - `ArrowUp`/`ArrowDown` (in search bar) – cycle search history.
 
+### Search history *(this fork)*
+
+> Added in this fork (`feat/search-history`, upstream PR [#222](https://github.com/cardisoft/cardinal/pull/222)). Upstream only keeps an in-memory `ArrowUp`/`ArrowDown` history that is lost on restart.
+
+Committed queries are stored on disk, so your search history survives an app restart:
+
+- **What gets recorded** – pressing `Enter` in the search bar, and opening any result (double-click, `Cmd+O`, or the context menu). A search that led to an open is worth keeping.
+- **Where it lives** – browser `localStorage` under the key `cardinal.recentSearches`, newest first, duplicates promoted to the top, capped at 50 entries.
+- **The dropdown** – the 🕘 button on the right side of the search bar (Files tab) opens the history panel. Click an entry to re-run that query immediately; `Clear history` empties the list; `Esc` or a click outside closes the panel.
+
 Happy searching!
 
 ---
