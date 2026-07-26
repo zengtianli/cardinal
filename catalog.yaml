@@ -1,0 +1,22 @@
+# catalog.yaml — 模块 SSOT(认知单位,仿 Backstage catalog-info.yaml)
+name: cardinal
+domain: desktop-app
+function: 外来 fork 的 macOS 文件名极速搜索 app(上游 cardisoft/cardinal,MIT,Rust+Tauri,1610⭐) — 本 fork 增强「搜索历史持久化 + 可点击 recent-searches 下拉」,已向上游提 PR #222
+public_api: "/Applications/Cardinal.app(装机版即本 fork 自编译产物) · 快捷键唤起搜索 · 上游 CLI 见 lsf/"
+key_scripts:
+  - cardinal/                                    # Tauri 前端 + 应用壳(npm run tauri build 入口)
+  - cardinal/src/hooks/useRecentSearches.ts      # 本 fork 核心增强:localStorage 搜索历史,上限 50 去重置顶
+  - cardinal/src-tauri/                          # Rust 侧;产物 target/release/bundle/macos/Cardinal.app
+  - fswalk/                                      # 上游文件系统遍历核
+  - namepool/ query-segmentation/ file-tags/     # 上游索引与查询分词
+  - rust-toolchain.toml                          # nightly 钉版(rustup 自动拉;homebrew cargo 不认)
+depends_on: []          # 自带完整依赖(Cargo + npm),不消费总部任何能力 → A 档,故落 ~/Apps
+tier: PACKAGE
+owner: cardisoft        # 上游作者;本 fork = GitHub 真 fork,remote mine=zengtianli/cardinal(public,isFork=true)
+docs: ./CLAUDE.md
+status: active          # 日常在用:/Applications/Cardinal.app 由本仓自编译,非上游 release
+notes: |
+  2026-07-25 从 ~/Dev 根归位到 ~/Apps(A 档:自带完整依赖、不 import 总部代码)。
+  分支布局:feat/search-history=本地工作分支(功能+fork 维护文件);pr/persist-search-history=投上游的干净分支。
+  升级上游 = git fetch origin && git rebase origin/master feat/search-history 后**重编译**,禁直接覆盖装机版。
+  构建/坑单全文见 ./CLAUDE.md。

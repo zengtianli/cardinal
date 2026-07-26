@@ -3,6 +3,7 @@
 > 上游 = [cardisoft/cardinal](https://github.com/cardisoft/cardinal)（MIT，macOS 文件名极速搜索，Rust+Tauri，1610⭐）。
 > 本 clone = **GitHub 真 fork**，remote `mine` → [`zengtianli/cardinal`](https://github.com/zengtianli/cardinal)（**public**，isFork=true，parent=cardisoft/cardinal）；`origin` = 上游只读。
 > **已提 PR 给上游**：[cardisoft/cardinal#222](https://github.com/cardisoft/cardinal/pull/222)（分支 `pr/persist-search-history`，只含功能不含本 fork 维护文件）。合并后可弃 fork。
+> **2026-07-25 从 `~/Dev` 根归位到 `~/Apps`**（A 档：自带完整依赖、不 import 总部代码；判据见 `~/Dev/CLAUDE.md`「根下落位规范」）。
 
 ## 本 fork 的增强（feat/search-history 分支）
 
@@ -16,7 +17,7 @@
 ## 构建 / 安装（已验证流程）
 
 ```bash
-cd ~/Dev/cardinal/cardinal
+cd ~/Apps/cardinal/cardinal
 npm install && npm test          # 前端测试（vitest）
 npm run tauri build              # 需 rustup nightly（rust-toolchain.toml 钉版本，rustup 自动拉）
 # 产物: cardinal/src-tauri/target/release/bundle/macos/Cardinal.app（ad-hoc 签名）
